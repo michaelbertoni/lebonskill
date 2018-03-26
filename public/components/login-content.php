@@ -28,7 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <style>
     .mdl-card {
         width: 50vh;
-        max-height: 50vh;
+        max-height: 100vh;
+    }
+    .mdl-button {
+        line-height: 3.8vh;
     }
 </style>
 

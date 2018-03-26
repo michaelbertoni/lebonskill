@@ -1,13 +1,12 @@
-<style>
-    .page-content {
-        display: flex;
-        justify-content: center;
-    }
-</style>
-
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .page-content {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
     <?php require("layout/head.php"); ?>
 </head>
 <body>

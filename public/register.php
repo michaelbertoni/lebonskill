@@ -1,13 +1,13 @@
-<style>
-    .page-content {
-        display: flex;
-        justify-content: center;
-    }
-</style>
-
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .page-content {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
     <?php require("layout/head.php"); ?>
 </head>
 <body>
@@ -15,7 +15,7 @@
             mdl-layout--fixed-header">
     <?php
     $TITLE = "Inscription";
-    $ACTIVE_ITEM = "REGISTER";
+    $ACTIVE_ITEM = "INSCRIPTION";
     require("layout/header.php");
     ?>
     <main class="mdl-layout__content">
