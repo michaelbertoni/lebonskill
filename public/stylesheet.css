@@ -4,3 +4,9 @@
 .page-content {
     padding: 20px;
 }
+.error {
+    color: crimson;
+}
+.visible {
+    display: block;
+}

@@ -32,7 +32,7 @@ session_start();
         <div class="mdl-layout-spacer"></div>
         <?php if(!isset($_SESSION['login_id'])) { ?>
         <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'LOGIN' ? 'bold' : '' ?>" href="login.php">Connexion</a>
-        <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'INSCRIPTION' ? 'bold' : '' ?>" href="">Inscription</a>
+        <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'INSCRIPTION' ? 'bold' : '' ?>" href="register.php">Inscription</a>
         <?php }
         else { ?>
         <a class="mdl-navigation__link" href="logout.php">Déconnexion</a>
