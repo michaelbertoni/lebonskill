@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="register.php" method="post">
         <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="username" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>"/>
+                <input class="mdl-textfield__input" type="text" maxlength="45" id="username" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>"/>
                 <label class="mdl-textfield__label" for="username">Nom d'utilisateur</label>
             </div>
             <div class="error <?php echo isset($errorUsername) ? 'visible' : ''; ?>"><?php echo isset($errorUsername) ? $errorUsername : ''; ?></div>

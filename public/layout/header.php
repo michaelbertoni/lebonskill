@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require("services/sessionService.php");
 
 ?>
 
@@ -25,7 +26,7 @@ session_start();
     <span class="mdl-layout-title">Le Bon Skill</span>
     <nav class="mdl-navigation mdl-layout-spacer">
         <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'ACCUEIL' ? 'bold' : '' ?>" href="index.php">Accueil</a>
-        <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'PROFIL' ? 'bold' : '' ?>" href="">Profil</a>
+        <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'PROFIL' ? 'bold' : '' ?>" href="profil.php">Profil</a>
         <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'RECHERCHE' ? 'bold' : '' ?>" href="">Recherche</a>
         <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'RDV' ? 'bold' : '' ?>" href="">Rendez-vous</a>
         <a class="mdl-navigation__link <?php echo $ACTIVE_ITEM == 'MESSAGES' ? 'bold' : '' ?>" href="">Messages</a>

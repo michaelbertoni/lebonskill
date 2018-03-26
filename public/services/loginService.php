@@ -1,7 +1,5 @@
 <?php
 
-require("dbService.php");
-
 function login($username, $password) {
     $stmt = getConnection()->prepare("SELECT ID, USERNAME, PASSWORD_HASH FROM LOGINS WHERE USERNAME = :username");
     $stmt->bindValue('username', $username, PDO::PARAM_STR);

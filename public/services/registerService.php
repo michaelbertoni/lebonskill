@@ -1,7 +1,5 @@
 <?php
 
-require("dbService.php");
-
 function register($username, $password) {
     $bdd = getConnection();
 
