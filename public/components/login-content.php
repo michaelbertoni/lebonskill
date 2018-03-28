@@ -1,24 +1,21 @@
 <?php
 
-require("services/loginService.php");
-
+// The request is using the POST method
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // The request is using the POST method
+    $error = null;
     if (empty($_POST['username'])) {
-        $errorUsername = "Le nom d'utilisateur est obligatoire.";
+        $error .= "Le nom d'utilisateur est obligatoire.<br>";
     }
     if (empty($_POST['password'])) {
-        $errorPassword = "Le mot de passe est obligatoire.";
+        $error .= "Le mot de passe est obligatoire.<br>";
     }
 
-    if (!isset($errorUsername) && !isset($errorPassword)) {
-        $errorArray = login($_POST['username'], $_POST['password']);
-        if (isset($errorArray)) {
-            $errorUsername = isset($errorArray['username']) ? $errorArray['username'] : '';
-            $errorPassword = isset($errorArray['password']) ? $errorArray['password'] : '';
-        }
-        else {
+    if (empty($error)) {
+        require_once "services/LoginService.php";
+        $error = LoginService::login($_POST['username'], $_POST['password']);
+        if (empty($error))  {
             header('Location: index.php');
+            exit;
         }
     }
 }
@@ -39,18 +36,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         <h2 class="mdl-card__title-text">Connectez-vous.</h2>
     </div>
-    <form action="login.php" method="post">
+    <form action="" method="post">
         <div class="mdl-card__supporting-text">
+            <div class="error <?= isset($error) ? 'visible' : ''; ?>"><?= isset($error) ? $error : ''; ?></div>
             <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" maxlength="45" id="username" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>"/>
+                <input class="mdl-textfield__input" type="text" maxlength="45" id="username" name="username" value="<?= isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>"/>
                 <label class="mdl-textfield__label" for="username">Nom d'utilisateur</label>
             </div>
-            <div class="error <?php echo isset($errorUsername) ? 'visible' : ''; ?>"><?php echo isset($errorUsername) ? $errorUsername : ''; ?></div>
             <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="password" id="password" name="password" />
                 <label class="mdl-textfield__label" for="userpass">Mot de passe</label>
             </div>
-            <div class="error <?php echo isset($errorPassword) ? 'visible' : ''; ?>"><?php echo isset($errorPassword) ? $errorPassword : ''; ?></div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Se connecter</button>

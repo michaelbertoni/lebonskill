@@ -1,6 +1,6 @@
 <?php
 
-require("services/dbService.php");
+require("services/DbService.php");
 
 function refreshUsernameFromSessionUserId() {
     if (!isset($_SESSION['username'])) {
