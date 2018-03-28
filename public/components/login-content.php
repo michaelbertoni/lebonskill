@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($error)) {
         require_once "services/LoginService.php";
-        $error = LoginService::login($_POST['username'], $_POST['password']);
+        $error = login($_POST['username'], $_POST['password']);
         if (empty($error))  {
             header('Location: index.php');
             exit;

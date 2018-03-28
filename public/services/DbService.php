@@ -1,19 +1,21 @@
 <?php
 
-class DbService {
-
-    public static function getPDO() {
-        try {
-            return new PDO('mysql:host=mysql;dbname=lebonskill', "lebonskill", "pass");
-        }
-        catch (Exception $e)
-        {
-            die('Erreur - getConnection : ' . $e->getMessage());
-        }
+/**
+ * @return PDO
+ */
+function getPDO() {
+    try {
+        return new PDO('mysql:host=mysql;dbname=lebonskill', "lebonskill", "pass");
     }
-
-    public static function printStatementError(PDOStatement $statement) {
-        return "Erreur lors du requêtage de la base de données :<br>" . $statement->errorInfo()[2];
+    catch (Exception $e) {
+        die("Erreur lors de la connexion à la base de données :<br>" . $e->getMessage());
     }
+}
 
+/**
+ * @param PDOStatement $statement
+ * @return string
+ */
+function printStatementError(PDOStatement $statement) {
+    return "Erreur lors du requêtage de la base de données :<br>" . $statement->errorInfo()[2];
 }

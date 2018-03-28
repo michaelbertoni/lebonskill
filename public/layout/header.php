@@ -1,7 +1,10 @@
 <?php
 
 session_start();
-require("services/sessionService.php");
+
+// include essential services
+require_once "services/DbService.php";
+require_once "services/SessionService.php";
 
 ?>
 

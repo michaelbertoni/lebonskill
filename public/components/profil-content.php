@@ -1,12 +1,14 @@
 <?php
 
-require("services/profilService.php");
+require_once "services/ProfilService.php";
+require_once "services/SessionService.php";
 
 if (empty($_SESSION['login_id'])) {
     header('Location: login.php');
+    exit;
 }
 
-refreshUsernameFromSessionUserId();
+$username = findUsernameFromSession();
 $profil = findUserData();
 
 ?>
@@ -30,16 +32,15 @@ $profil = findUserData();
             </div>
             <form action="actions/profilLoginUpdate.php" method="post">
                 <div class="mdl-card__supporting-text">
+                    <div class="error <?= isset($errorLogin) ? 'visible' : ''; ?>"><?= isset($errorLogin) ? $errorLogin : ''; ?></div>
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" maxlength="45" id="username" name="username" value="<?php echo $_SESSION['username']; ?>"/>
+                        <input class="mdl-textfield__input" type="text" maxlength="45" id="username" name="username" value="<?= $username ?>"/>
                         <label class="mdl-textfield__label" for="username">Nom d'utilisateur</label>
                     </div>
-                    <div class="error <?php echo isset($errorUsername) ? 'visible' : ''; ?>"><?php echo isset($errorUsername) ? $errorUsername : ''; ?></div>
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="password" id="password" name="password"/>
                         <label class="mdl-textfield__label" for="userpass">Nouveau mot de passe</label>
                     </div>
-                    <div class="error <?php echo isset($errorPassword) ? 'visible' : ''; ?>"><?php echo isset($errorPassword) ? $errorPassword : ''; ?></div>
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="password" id="password2" name="password2" />
                         <label class="mdl-textfield__label" for="userpass">Confirmez votre mot de passe</label>
@@ -61,11 +62,11 @@ $profil = findUserData();
             <form action="actions/profilUserUpdate.php" method="post">
                 <div class="mdl-card__supporting-text">
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" maxlength="45" type="text" id="firstName" name="firstName" value="<?php echo $profil['firstName'] ?>"/>
+                        <input class="mdl-textfield__input" maxlength="45" type="text" id="firstName" name="firstName" value="<?= $profil['firstName'] ?>"/>
                         <label class="mdl-textfield__label" for="firstName">Prénom</label>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" maxlength="45" type="text" id="familyName" name="familyName" value="<?php echo $profil['familyName'] ?>"/>
+                        <input class="mdl-textfield__input" maxlength="45" type="text" id="familyName" name="familyName" value="<?= $profil['familyName'] ?>"/>
                         <label class="mdl-textfield__label" for="familyName">Nom</label>
                     </div>
                 </div>
