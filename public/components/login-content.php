@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once "services/LoginService.php";
         $error = login($_POST['username'], $_POST['password']);
         if (empty($error))  {
-            header('Location: index.php');
+            header('Location: index.php?login');
             exit;
         }
     }

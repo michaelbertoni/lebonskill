@@ -7,6 +7,9 @@
 .error {
     color: crimson;
 }
+.success {
+    color: #27b41a;
+}
 .visible {
     display: block;
 }
